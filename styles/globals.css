@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+@layer base {
+  h1 {
+    font-family: Poppins, sans-serif;
+  }
+  button:focus {
+    outline: 0;
+  }
+}

@@ -1,0 +1,17 @@
+.border-line p {
+  display: flex;
+  flex-direction: row;
+  color: rgb(160, 160, 160);
+  background-color: white;
+  letter-spacing: -0.3px;
+  padding-top: 1.5rem;
+}
+
+.border-line p:before,
+.border-line p:after {
+  
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid rgb(216, 216, 216);
+  margin: auto 14px;
+}
