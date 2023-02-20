@@ -9,7 +9,7 @@ import { AuthFormContextProvider } from "../store/auth-context";
 import { fetchItemData, sendListData } from "../store/item-action";
 import { fetchContentData } from "../store/content-action";
 
-import Notification from "../components/ui/Notification";
+import Notification from "../components/ui/notification";
 import Layout from "../components/layout/layout";
 import PageLoader from "../components/ui/page-loader";
 import "../styles/globals.css";
