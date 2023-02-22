@@ -31,7 +31,7 @@ export default function NavbarUnder({ onOpen, onClose, showModal }) {
         <MagnifyingGlassIcon width={30} height={30} />
         Search
       </button>
-      <Link className="active hover:text-pink-700 pt-1" href="/">
+      <Link className="hover:text-pink-700 dark:bg-slate-800 pt-1" href="/">
         <HomeIcon />
         Home
       </Link>

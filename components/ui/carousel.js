@@ -106,7 +106,7 @@ const Carousel = (props) => {
         </div>
         <div
           ref={carousel}
-          className="carousel-container relative flex gap-2 overflow-hidden scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
+          className="carousel-container relative flex gap-2 overflow-hidden scroll-smooth snap-x snap-mandatory touch-auto z-0"
         >
           {props.children}
         </div>

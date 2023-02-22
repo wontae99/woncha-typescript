@@ -7,6 +7,7 @@ import AuthFormContext from "../../store/auth-context";
 import NavProfile from "./nav-profile";
 import NavbarUnder from "./navbar-under";
 import SearchModal from "./search-modal";
+import ModeButton from "./mode-btn";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -82,20 +83,22 @@ export default function NavBar() {
                 <i className="fa-solid fa-magnifying-glass" />
               </button>
             </div>
-
-            <div className="flex items-center sm:static sm:inset-auto sm:ml-6 px-2 hidden sm:block">
-              <div className="dark:text-white space-x-4">
-                {!session && (
-                  <button onClick={showLoginFormHandler}>Login</button>
-                )}
-                {!session && (
-                  <button onClick={showSignupHandler}>SignUp</button>
+            <div className="flex flex-row items-center ">
+              <ModeButton />
+              <div className="sm:ml-6 px-2 hidden sm:block">
+                <div className="dark:text-white space-x-4">
+                  {!session && (
+                    <button onClick={showLoginFormHandler}>Login</button>
+                  )}
+                  {!session && (
+                    <button onClick={showSignupHandler}>SignUp</button>
+                  )}
+                </div>
+                {/* Profile dropdown */}
+                {session && (
+                  <NavProfile onClick={logoutHandler} classNames={classNames} />
                 )}
               </div>
-              {/* Profile dropdown */}
-              {session && (
-                <NavProfile onClick={logoutHandler} classNames={classNames} />
-              )}
             </div>
           </div>
         </div>

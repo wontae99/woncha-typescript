@@ -1,12 +1,17 @@
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AuthFormContext from "../../store/auth-context";
 
 import { PencilIcon, XCircleIcon } from "@heroicons/react/24/solid";
 import { itemActions } from "../../store/item-slice";
 import classes from "./sidebar.module.css";
+import { useSession } from "next-auth/react";
 
 export default function SideBar({ type, contentId }) {
+  const { data: session } = useSession();
+  const AuthFormCtx = useContext(AuthFormContext);
+
   const dispatch = useDispatch();
   const { isAdded, items } = useSelector((state) => state.item);
   const [btnIsHighlited, setBtnIsHighlighted] = useState(false);
@@ -19,12 +24,12 @@ export default function SideBar({ type, contentId }) {
   }, [type, contentId, dispatch]);
 
   useEffect(() => {
-    setRotate("")
+    setRotate("");
     setBtnIsHighlighted(true);
 
     const timer = setTimeout(() => {
       setBtnIsHighlighted(false);
-      setRotate("rotate-45")
+      setRotate("rotate-45");
     }, 500);
 
     return () => {
@@ -33,6 +38,10 @@ export default function SideBar({ type, contentId }) {
   }, [items]);
 
   const toggleItemHandler = () => {
+    if (!session) {
+      AuthFormCtx.showAuthForm();
+      return;
+    }
     dispatch(itemActions.toggleItem({ type, contentId }));
   };
 
@@ -42,6 +51,7 @@ export default function SideBar({ type, contentId }) {
         <div className="">
           <button
             type="button"
+            onClick={toggleItemHandler}
             disabled={btnIsHighlited}
             className={btnIsHighlited ? "cursor-wait" : ""}
           >
@@ -52,7 +62,6 @@ export default function SideBar({ type, contentId }) {
                   ? "text-red-500 hover:text-red-400"
                   : `text-blue-500 hover:text-blue-400 ${rotate}`
               } ${spinClasses}`}
-              onClick={toggleItemHandler}
             />
             {isAdded ? "Never mind" : "Want to see"}
           </button>

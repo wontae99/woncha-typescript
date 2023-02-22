@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getSession, SessionProvider } from "next-auth/react";
@@ -9,10 +9,11 @@ import { AuthFormContextProvider } from "../store/auth-context";
 import { fetchItemData, sendListData } from "../store/item-action";
 import { fetchContentData } from "../store/content-action";
 
-import Notification from "../components/ui/Notification";
+import Notification from "../components/ui/notification";
 import Layout from "../components/layout/layout";
 import PageLoader from "../components/ui/page-loader";
 import "../styles/globals.css";
+import DarkModeToggler from "../script/dark-mode-toggler";
 
 let isInitial = true;
 function App({ Component, pageProps: { session, ...pageProps } }) {
@@ -72,23 +73,26 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
   }, [notification]);
 
   return (
-    <AuthFormContextProvider>
-      <SessionProvider session={session}>
-        <div id="overlays"></div>
-        {notifIsShown && notification && (
-          <Notification
-            status={notification.status}
-            title={notification.title}
-            message={notification.message}
-          />
-        )}
-        <Layout>
-          <React.StrictMode>
-            {pageLoading ? <PageLoader /> : <Component {...pageProps} />}
-          </React.StrictMode>
-        </Layout>
-      </SessionProvider>
-    </AuthFormContextProvider>
+    <Fragment>
+      <AuthFormContextProvider>
+        <SessionProvider session={session}>
+          <div id="overlays"></div>
+          {notifIsShown && notification && (
+            <Notification
+              status={notification.status}
+              title={notification.title}
+              message={notification.message}
+            />
+          )}
+          <Layout>
+            <React.StrictMode>
+              {pageLoading ? <PageLoader /> : <Component {...pageProps} />}
+            </React.StrictMode>
+          </Layout>
+        </SessionProvider>
+      </AuthFormContextProvider>
+      <DarkModeToggler />
+    </Fragment>
   );
 }
 

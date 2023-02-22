@@ -15,7 +15,7 @@ export default function ProfileCommentList({ commentData }) {
 
   return (
     <Fragment>
-      <div className="flex justify-between bg-white dark:bg-slate-900 z-20 w-full border-b dark:border-slate-400 px-4 py-3">
+      <div className="sticky top-0 sm:top-16 flex justify-between bg-white dark:bg-slate-900 z-20 w-full border-t border-b dark:border-slate-400 px-4 py-3">
         <h2 className="text-xl font-bold dark:text-white">My Comments</h2>
         <div className="">
           <BackButton />

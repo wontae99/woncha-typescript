@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { signOut } from "next-auth/react";
 
 import ProfileBodyCard from "../ui/profile-body-card";
 import MyList from "./my-list";
@@ -11,6 +12,14 @@ export default function ProfileBody({ data }) {
 
   return (
     <ProfileBodyCard>
+      <button
+        className="absolute right-2 top-2 z-10 text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-4 py-2 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
+        onClick={() => {
+          signOut();
+        }}
+      >
+        Sign Out
+      </button>
       <div className="px-6">
         <UserProfileInfo data={data} />
         <ul className="grid grid-cols-1">
