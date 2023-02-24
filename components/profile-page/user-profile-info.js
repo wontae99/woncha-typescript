@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -5,6 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
 export default function UserProfileInfo({ data }) {
+  const { data: session } = useSession();
+  let img_url;
+  if (session) {
+    img_url = session.user.image || noProfileIcon;
+  }
   const router = useRouter();
   const dispatch = useDispatch();
   const showMyList = useSelector((state) => state.ui.myList);
@@ -39,7 +45,7 @@ export default function UserProfileInfo({ data }) {
         <div className="relative">
           <Image
             alt="profile img"
-            src={data.image}
+            src={img_url}
             width={200}
             height={200}
             placeholder="blur"

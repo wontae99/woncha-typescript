@@ -2,8 +2,10 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import KakaoProvider from "next-auth/providers/kakao";
 
+import { store } from "../../../store";
 import { verifyPassword } from "../../../lib/auth-util";
 import { connectToDatabase } from "../../../lib/db-util";
+import { uiActions } from "../../../store/ui-slice";
 
 export const authOptions = {
   trustHost: true,
@@ -32,7 +34,12 @@ export const authOptions = {
         });
 
         if (!user) {
-          throw new Error("No user found!");
+          store.dispatch(
+            uiActions.showNotification({
+              message: "User not found with your input email.",
+            })
+          );
+          return;
         }
 
         const isValid = await verifyPassword(
@@ -41,7 +48,12 @@ export const authOptions = {
         );
 
         if (!isValid) {
-          throw new Error("Incorrect Password");
+          store.dispatch(
+            uiActions.showNotification({
+              message: "Incorrect password. Please check your password input.",
+            })
+          );
+          return;
         }
 
         client.close();

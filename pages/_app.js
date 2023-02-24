@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { getSession, SessionProvider } from "next-auth/react";
 import { useSelector, useDispatch } from "react-redux";
 import { wrapper } from "../store";
-import { uiActions } from "../store/ui-slice";
 import { AuthFormContextProvider } from "../store/auth-context";
 import { fetchItemData, sendListData } from "../store/item-action";
 import { fetchContentData } from "../store/content-action";
@@ -19,8 +18,7 @@ let isInitial = true;
 function App({ Component, pageProps: { session, ...pageProps } }) {
   const dispatch = useDispatch();
   const wishList = useSelector((state) => state.item);
-  const { notification, notifIsShown } = useSelector((state) => state.ui);
-
+  const { notification } = useSelector((state) => state.ui);
   const [pageLoading, setPageLoading] = useState(false);
   const router = useRouter();
 
@@ -64,25 +62,13 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
     }
   }, [wishList, dispatch]);
 
-  useEffect(() => {
-    if (notifIsShown) {
-      setTimeout(() => {
-        dispatch(uiActions.unshownNotif());
-      }, 2000);
-    }
-  }, [notification]);
-
   return (
     <Fragment>
       <AuthFormContextProvider>
         <SessionProvider session={session}>
           <div id="overlays"></div>
-          {notifIsShown && notification && (
-            <Notification
-              status={notification.status}
-              title={notification.title}
-              message={notification.message}
-            />
+          {notification.isShown && (
+            <Notification message={notification.message} />
           )}
           <Layout>
             <React.StrictMode>

@@ -3,8 +3,11 @@ import { useSession } from "next-auth/react";
 
 import StarRating from "./star-rating";
 import AuthFormContext from "../../store/auth-context";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../../store/ui-slice";
 
 const CommentForm = ({ addComment, onEdit }) => {
+  const dispatch = useDispatch();
   const { data: session } = useSession();
   const ctx = useContext(AuthFormContext);
 
@@ -40,6 +43,15 @@ const CommentForm = ({ addComment, onEdit }) => {
       },
       date,
     };
+    const rating = commentData.comment.rating;
+    if (!rating || rating === "undefined") {
+      console.log("UM")
+      dispatch(
+        uiActions.showNotification({ message: "Please fill out rating!" })
+      );
+
+      return;
+    }
 
     if (ctx.isEdit) {
       await onEdit(commentData);

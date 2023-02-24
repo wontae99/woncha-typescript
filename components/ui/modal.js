@@ -21,9 +21,6 @@ const ModalOverlay = (props) => {
 };
 
 const Modal = (props) => {
-  if (typeof window === "undefined") {
-    return null;
-  }
   const portalElement = document.getElementById("modal-overlay");
   return (
     <React.Fragment>

@@ -9,7 +9,7 @@ export default function NavProfile({ onClick, classNames }) {
   let img_url;
 
   if (session) {
-    img_url = session.user.image || noProfileIcon;
+    img_url = session.user.image;
   }
 
   return (
@@ -18,7 +18,7 @@ export default function NavProfile({ onClick, classNames }) {
         <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
           <span className="sr-only">Open user menu</span>
           <Image
-            className="h-12 w-12"
+            className="h-12 w-12 rounded-full"
             src={img_url}
             alt="profile_img"
             width={100}

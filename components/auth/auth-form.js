@@ -11,8 +11,11 @@ import Modal from "../ui/modal";
 import DotLoader from "../ui/dot-loader";
 import classes from "./border-line.module.css";
 import AuthFormContext from "../../store/auth-context";
+import { useDispatch } from "react-redux";
+import { uiActions } from "../../store/ui-slice";
 
 export default function AuthForm(props) {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const authFormCtx = useContext(AuthFormContext);
 
@@ -69,30 +72,41 @@ export default function AuthForm(props) {
 
     if (authFormCtx.isForLogin) {
       try {
-        const result = await signIn("credentials", {
-          redirect: true,
+        await signIn("credentials", {
+          redirect: false,
           email: enteredEmail,
           password: enteredPassword,
+        }).then((res) => {
+          if (res.error) {
+            dispatch(
+              uiActions.showNotification({
+                message: "Failed to sign in. Check your email, password input.",
+              })
+            );
+          }
         });
-        console.log(result);
         setLoading(false);
         authFormCtx.hideAuthForm();
       } catch (err) {
-        console.log(err);
+        dispatch(
+          uiActions.showNotification({
+            message: "Failed to log in.",
+          })
+        );
         setLoading(false);
       }
     } else {
       try {
-        const result = await createUser(
-          enteredName,
-          enteredEmail,
-          enteredPassword
-        );
+        result = await createUser(enteredName, enteredEmail, enteredPassword);
         console.log(result);
         setLoading(false);
         authFormCtx.showLogin();
       } catch (err) {
-        console.log(err);
+        dispatch(
+          uiActions.showNotification({
+            message: "Failed to create a new account.",
+          })
+        );
         setLoading(false);
       }
     }

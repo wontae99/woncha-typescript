@@ -3,23 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 const uiSlice = createSlice({
   name: "ui",
   initialState: {
-    notification: null,
-    isShown: false,
+    notification: { message: "", isShown: false },
     myList: { showMovie: false, showTV: false },
     showSearch: false,
   },
   reducers: {
     showNotification(state, action) {
-      state.isShown = true;
+      state.notification.isShown = true;
 
-      state.notification = {
-        status: action.payload.status,
-        title: action.payload.title,
-        message: action.payload.message,
-      };
+      state.notification.message = action.payload.message;
     },
     unshownNotif(state) {
-      state.isShown = false;
+      state.notification.isShown = false;
     },
     toggleMovieList(state) {
       state.myList.showMovie = !state.myList.showMovie;
