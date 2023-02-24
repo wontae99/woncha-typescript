@@ -28,18 +28,6 @@ export default function Document() {
           crossOrigin="anonymous"
         ></script>
         <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
-
-        <Script id="toggle-dark-light-mode">{`
-        if (
-          localStorage.getItem("color-theme") === "dark" ||
-          (!("color-theme" in localStorage) &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches)
-        ) {
-          document.documentElement.classList.add("dark");
-        } else {
-          document.documentElement.classList.remove("dark");
-        }
-        `}</Script>
       </Head>
       <body className="bg-white dark:bg-slate-900 mb-16 sm:mb-0">
         <div id="modal-overlay" />

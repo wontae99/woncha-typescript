@@ -1,9 +1,22 @@
 import Script from "next/script";
+import { Fragment } from "react";
 
 export default function DarkModeToggler() {
   return (
-    <Script id="dark-mode-controller" strategy="afterInteractive">
-      {`var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+    <Fragment>
+      <Script id="toggle-dark-light-mode">{`
+        if (
+          localStorage.getItem("color-theme") === "dark" ||
+          (!("color-theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+        `}</Script>
+      <Script id="dark-mode-controller" strategy="afterInteractive">
+        {`var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
 var themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
 
 // Change the icons inside the button based on previous settings
@@ -45,6 +58,7 @@ localStorage.setItem("color-theme", "dark");
 }
 }
 });`}
-    </Script>
+      </Script>
+    </Fragment>
   );
 }
