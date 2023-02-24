@@ -8,7 +8,7 @@ export default function ContentGrid(props) {
 
   return (
     <div className="pt-10 px-5">
-      <h1 className="text-3xl font-bold capitalize dark:text-slate-50">{heading}</h1>
+      <h1 className="text-3xl font-bold capitalize text-black dark:text-slate-50">{heading}</h1>
       <Carousel>
         {contents.map((content) => (
           <ContentItem
