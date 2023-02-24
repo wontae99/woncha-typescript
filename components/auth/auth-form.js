@@ -267,7 +267,14 @@ export default function AuthForm(props) {
             <p>OR</p>
           </span>
           <div className="flex justify-center space-x-6 pd-4">
-            <button type="button" onClick={() => signIn("kakao")}>
+            <button
+              type="button"
+              onClick={() => {
+                setLoading(true);
+                signIn("kakao");
+                setLoading(false);
+              }}
+            >
               <Image
                 src={kakao}
                 alt="kakao login btn"

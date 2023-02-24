@@ -26,7 +26,7 @@ export default function NavbarUnder({ onOpen, onClose, showModal }) {
   };
 
   return (
-    <div className="btm-nav pb-1 text-pink-500 dark:text-pink-400 dark:bg-slate-800 visible sm:invisible fixed w-full z-20 bottom-0 left-0 border-t">
+    <div className="btm-nav pb-1 text-pink-500 dark:text-pink-400 bg-white dark:bg-slate-800 visible sm:invisible fixed w-full z-20 bottom-0 left-0 border-t">
       <button onClick={onOpen} className="hover:text-pink-700 pt-1">
         <MagnifyingGlassIcon width={30} height={30} />
         Search
