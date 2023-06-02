@@ -32,7 +32,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const contentId = context.params.movieId;
   const data = await getDataWithId("movie", contentId);
   const contentVideo = await getVideoWithId("movie", contentId);
