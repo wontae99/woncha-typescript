@@ -31,7 +31,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const contentId = context.params.tvShowId;
   const data = await getDataWithId("tv", contentId);
   const contentVideo = await getVideoWithId("tv", contentId);
