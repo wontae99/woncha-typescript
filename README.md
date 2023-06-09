@@ -10,6 +10,7 @@ https://nextjs-movie-project-two.vercel.app/
 
 ## 사용기술
 
+<<<<<<< HEAD
 <div align="center">
 	<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=javascript&logoColor=#F7DF1E" />
 	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=react&logoColor=#61DAFB" />
@@ -31,3 +32,5 @@ https://nextjs-movie-project-two.vercel.app/
 * mongodb 백앤드를 기반한 comment 기능
 
 ## 개선 사항
+=======
+>>>>>>> 7660282dc517e786bd8f38fb43e3b1c96c0ac858
