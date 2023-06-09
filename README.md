@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## 개발 목표
 
 nextjs를 사용하여 SSR 웹사이트를 구축하고, tailwind css를 사용하여 다양한 컴포넌트들과 반응형 웹사이트를 구축.
