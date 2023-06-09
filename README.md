@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 개발 목표
 
-## Getting Started
+nextjs를 사용하여 SSR 웹사이트를 구축하고, tailwind css를 사용하여 다양한 컴포넌트들과 반응형 웹사이트를 구축.
 
-First, run the development server:
+또한 next-auth를 사용하여 웹사이트 자체 아이디 뿐만 아니라 카카오 계정과 연동한 로그인 방식 또한 구현해봄.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## DEMO
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+https://nextjs-movie-project-two.vercel.app/
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 사용기술
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<div align="center">
+	<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=javascript&logoColor=#F7DF1E" />
+	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=react&logoColor=#61DAFB" />
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=nextdotjs&logoColor=#000000" />
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=vercel&logoColor=#fff" />
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=tailwindcss&logoColor=#06B6D4" />
+    <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=mongodb&logoColor=#47A248" />
+</div>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
+## Advanced Feature
 
-To learn more about Next.js, take a look at the following resources:
+* 반응형 ui
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* dark/light mode
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+* autocomplete search
 
-## Deploy on Vercel
+* mongodb 백앤드를 기반한 comment 기능
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 개선 사항
