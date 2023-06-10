@@ -51,32 +51,34 @@ https://nextjs-movie-project-two.vercel.app/
 ## - **autocomplete search**
 
 ![autocomplete](https://github.com/wontae99/nextjs-movie-project/assets/109476712/be789bd9-742b-4954-bddb-0b9d400c3391)
+<br>
 mui의 autocomplete 기능을 사용하여 content 제목들의 키워드를 통하여 자동완성 기능 구현
 <br><br>
 
 ## - **로그인 시스템**
 
 ![mongoDB](https://github.com/wontae99/nextjs-movie-project/assets/109476712/ec14f501-db74-4edf-a2dc-856341e7ba54)
-
+<br>
 웹사이트 계정 생성시 password 해쉬&솔팅 후 mongoDB에 저장.
 <br><br>
 
 ![login-credential](https://github.com/wontae99/nextjs-movie-project/assets/109476712/9a18d7d3-74f0-4720-9ea1-eb835386db50)
-웹 어플리케이션 credential로 로그인
+<br>웹 어플리케이션 credential로 로그인
 <br><br>
 
 ![login-kakao](https://github.com/wontae99/nextjs-movie-project/assets/109476712/04266963-a4c6-4fc8-9a8f-f0f8091f9d4b)
-kakao 계정으로 로그인
+<br>kakao 계정으로 로그인
 <br><br>
 
 ![login-google](https://github.com/wontae99/nextjs-movie-project/assets/109476712/f020c25c-e400-4f6e-9874-e85c6577e14e)
-google계정으로 로그인
+<br>google계정으로 로그인
 
 <br>
 
 ## - **Redux를 이용한 상태관리**
 
 ![toggle-fav](https://github.com/wontae99/nextjs-movie-project/assets/109476712/8177550f-a0b0-4607-8022-d8ccccd25c2f)
+<br>
 컨텐츠 즐겨찾기 및 알림 메시지를 redux로 state관리 / backend와 연결하여 CRUD 기능 구현.
 <br><br>
 
