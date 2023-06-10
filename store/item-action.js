@@ -34,20 +34,18 @@ export const fetchItemData = (userId) => {
 
 export const sendListData = (userId, item) => {
   return async (dispatch) => {
-    let pendingMsg, successMsg;
+    let successMsg;
     if (item.isAdded) {
-      pendingMsg = "Adding to my list.";
       successMsg = "Added to my list.";
     } else {
-      pendingMsg = "Removing from my list.";
       successMsg = "Removed from my list.";
     }
-    dispatch(
-      uiActions.showNotification({
-        status: "pending",
-        message: pendingMsg,
-      })
-    );
+    // dispatch(
+    //   uiActions.showNotification({
+    //     status: "pending",
+    //     message: pendingMsg,
+    //   })
+    // );
 
     const sendRequest = async () => {
       const response = await fetch(`/api/wish-list/${userId}`, {

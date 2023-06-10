@@ -9,6 +9,7 @@ module.exports = (phase) => {
         "images.unsplash.com",
         "image.tmdb.org",
         "i3.ytimg.com",
+        "lh3.googleusercontent.com"
       ],
       formats: ["image/avif", "image/webp"],
     },
@@ -23,6 +24,9 @@ module.exports = (phase) => {
       mongodb_database: "project-dev",
       kakao_id: "704d4c95ccb1d17b71d966caf555be1b",
       kakao_secret: "V4BriKpZMCHBDiTO0IZP0wYl4g2CPdTI",
+      google_clientId:
+        "978735214954-hffk7414s8q145ksv6su107ekt2mjr89.apps.googleusercontent.com",
+      google_clientSecret: "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",
       movie_api_key: "b8aafa6f10f8e0d81f357fd9d52efe94",
       SECRET: "LlKq6ZtYbr+hTC073mAmAh9/h2HwMfsFo4hrfCx6gts",
     },

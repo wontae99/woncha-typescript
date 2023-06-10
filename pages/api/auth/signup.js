@@ -6,7 +6,8 @@ async function handler(req, res) {
   if (req.method === "POST") {
     const data = req.body;
     const { name, email, password } = data;
-
+    console.log(name, email, password);
+    // client-side validation
     if (
       !email ||
       !email.includes("@") ||
@@ -14,7 +15,6 @@ async function handler(req, res) {
       password.trim().length < 7 ||
       password.includes(" ") ||
       name.trim().length < 2 ||
-      name.length > 8 ||
       name.includes(" ")
     ) {
       res.status(422).json({ message: "Invalid input" });
@@ -24,11 +24,33 @@ async function handler(req, res) {
     const client = await connectToDatabase();
     const db = client.db();
 
-    const user = await db.collection("users").findOne({ email: email });
+    const checkExistingEmail = !!(await db
+      .collection("users")
+      .findOne({ email: email }));
 
-    if (user) {
-      res.status(422).json({ message: "User exists already!" });
+    if (checkExistingEmail) {
       client.close();
+      // throw new Error("Email Already exists!");
+      res
+        .status(400)
+        .json({
+          status: 400,
+          ok: false,
+          message: `Email address "${email}" already exists!`,
+        });
+      return;
+    }
+
+    const checkExistingUser = !!(await db
+      .collection("users")
+      .findOne({ name: name }));
+    if (checkExistingUser) {
+      client.close();
+      res.status(400).json({
+        status: 400,
+        ok: false,
+        message: `Username: ${name} already exists!`,
+      });
       return;
     }
 
@@ -48,7 +70,11 @@ async function handler(req, res) {
         registerDate: registerDate,
       });
     } catch (err) {
-      res.status(500).json(err.message || "Failed to create user account.");
+      console.log(err);
+      // throw new Error("Failed to create a new account.");
+      return res
+        .status(500)
+        .json(err.message || "Failed to create user account.");
     }
 
     res.status(201).json({ message: "Successfully created your account!" });

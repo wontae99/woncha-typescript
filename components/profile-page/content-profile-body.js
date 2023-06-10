@@ -18,7 +18,7 @@ export default function ContentProfileBody({ data, type, contentId }) {
 
       {/* //// Main Body //// */}
 
-      <section className="md:containter md:absolute flex flex-col mx-auto w-full md:py-10 p-0">
+      <section className="md:containter md:absolute dark:bg-slate-600 flex flex-col mx-auto w-full md:py-10 p-0">
         <div className="min-w-0 break-words bg-white dark:bg-slate-800 w-full md:mx-auto md:w-3/4 shadow-xl md:rounded-lg">
           <div className="w-full md:p-4 divide-y divide-slate-200">
             <div className="p-2">
