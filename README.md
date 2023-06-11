@@ -17,7 +17,7 @@ https://nextjs-movie-project-two.vercel.app/
 # 기술 스택
 
 <div align="center">
-	<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=javascript&logoColor=#000" />
+	<img src="https://img.shields.io/badge/Javascript-007396?style=flat&logo=javascript&logoColor=#000" />
 	<img src="https://img.shields.io/badge/React-3e5661?style=flat&logo=react&logoColor=#000" />
     <img src="https://img.shields.io/badge/Redux-764ABC?style=flat&logo=redux&logoColor=#000" />
     <img src="https://img.shields.io/badge/NextJS-000000?style=flat&logo=nextdotjs&logoColor=#fff" />
@@ -97,4 +97,4 @@ mui의 autocomplete 기능을 사용하여 content 제목들의 키워드를 통
 
 <br><br>
 
-### content source : https://developer.themoviedb.org/reference/
+### content source(movie api) : https://developer.themoviedb.org/reference/
