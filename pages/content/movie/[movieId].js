@@ -46,5 +46,6 @@ export async function getStaticProps(context) {
       data: data,
       contentId,
     },
+    revalidate: 1,
   };
 }
