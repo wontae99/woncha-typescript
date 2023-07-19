@@ -1,11 +1,11 @@
 import { useAutocomplete } from "@mui/base/AutocompleteUnstyled";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../hooks/redux-hooks";
 import Link from "next/link";
 
 import { FilmIcon, TvIcon, XMarkIcon } from "@heroicons/react/20/solid";
 
 export default function SearchBar({ onClose }) {
-  const contentData = useSelector((state) => state.content.contents);
+  const contentData = useAppSelector((state) => state.content.contents);
   const { movies, tvShows } = contentData;
 
   let contentList = [];

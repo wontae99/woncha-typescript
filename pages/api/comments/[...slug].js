@@ -1,10 +1,11 @@
+import { ObjectId } from "mongodb";
+
 import {
   connectToDatabase,
   findDocument,
   getAllDocuments,
   insertDocument,
 } from "../../../lib/db-util";
-import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
   const { slug } = req.query;
@@ -73,7 +74,7 @@ export default async function handler(req, res) {
     }
 
     const userDoc = await findDocument(client, "users", {
-      _id: ObjectId(userId),
+      _id: new ObjectId(userId),
     });
 
     const newComment = {

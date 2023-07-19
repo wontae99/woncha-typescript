@@ -16,6 +16,7 @@
     "@mui/material": "^5.11.9",
     "@next/font": "13.0.7",
     "@reduxjs/toolkit": "^1.9.1",
+    "babel-plugin-module-resolver": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "cookies-next": "^2.1.1",
     "daisyui": "^2.47.0",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
+    "@types/bcryptjs": "^2.4.2",
     "@types/node": "^20.4.2",
     "@types/react": "^18.2.15",
     "autoprefixer": "^10.4.13",

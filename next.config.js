@@ -1,4 +1,5 @@
 const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+const path = require("path");
 
 module.exports = (phase) => {
   // if (phase === PHASE_DEVELOPMENT_SERVER) {
@@ -9,7 +10,7 @@ module.exports = (phase) => {
         "images.unsplash.com",
         "image.tmdb.org",
         "i3.ytimg.com",
-        "lh3.googleusercontent.com"
+        "lh3.googleusercontent.com",
       ],
       formats: ["image/avif", "image/webp"],
     },
@@ -38,5 +39,14 @@ module.exports = (phase) => {
         },
       ];
     },
+    // webpack(config, { webpack }) {
+    //   config.resolve = {
+    //     alias: {
+    //       "@components": path.resolve(__dirname, "components"),
+    //     },
+    //     ...config.resolve,
+    //   };
+    //   return config;
+    // },
   };
 };
