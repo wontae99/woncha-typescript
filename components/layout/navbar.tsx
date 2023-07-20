@@ -9,7 +9,7 @@ import NavbarUnder from "./navbar-under";
 import SearchModal from "./search-modal";
 import ThemeSwitch from "../ui/theme-switch";
 
-import { ColorTheme } from "../../constants/ColorTheme";
+import { ColorTheme } from "../../constants/color-theme";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

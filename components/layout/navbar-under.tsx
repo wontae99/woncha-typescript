@@ -10,7 +10,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
 import SearchModal from "./search-modal";
-import { ColorTheme } from "../../constants/ColorTheme";
+import { ColorTheme } from "../../constants/color-theme";
 
 interface NavbarUnderProps {
   onOpen: () => void;

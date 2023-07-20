@@ -4,7 +4,7 @@ import React, { memo } from "react";
 import CommentListItem from "./comment-list-item";
 
 import { CommentList as CommentListType } from "../../lib/types";
-import { ColorTheme } from "constants/ColorTheme";
+import { ColorTheme } from "constants/color-theme";
 
 interface CommentListProps {
   comments: CommentListType;

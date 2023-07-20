@@ -5,7 +5,7 @@ import SideBar from "./sidebar";
 import Carousel from "../ui/carousel";
 import ContentItem from "../contents/content-item";
 import Comments from "../comments/comments";
-import { ColorTheme } from "constants/ColorTheme";
+import { ColorTheme } from "constants/color-theme";
 
 export default function ContentProfileBody({ data, type, contentId }) {
   const { videoData } = data;

@@ -1,4 +1,4 @@
-import { ColorTheme } from "constants/ColorTheme";
+import { ColorTheme } from "constants/color-theme";
 import { TailSpin } from "react-loader-spinner";
 
 const Backdrop = ({ children }) => {

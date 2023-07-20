@@ -7,7 +7,7 @@ import { itemActions } from "../../store/item-slice";
 import classes from "./sidebar.module.css";
 import { useSession } from "next-auth/react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
-import { ColorTheme } from "constants/ColorTheme";
+import { ColorTheme } from "constants/color-theme";
 
 export default function SideBar({ type, contentId }) {
   const { data: session } = useSession();
