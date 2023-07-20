@@ -12,21 +12,14 @@ export default function UserProfileInfo({ data }) {
   if (session) {
     img_url = session.user.image || "/images/no-profile-icon.png";
   }
-  const router = useRouter();
+
   const dispatch = useAppDispatch();
-  const showMyList = useAppSelector((state) => state.ui.myList);
 
   const toggleMovieList = () => {
     dispatch(uiActions.toggleMovieList());
-    if (!showMyList.showMovie) {
-      router.push("#my-movie");
-    }
   };
   const toggleTVList = () => {
     dispatch(uiActions.toggleTVList());
-    if (!showMyList.showTV) {
-      router.push("#my-tv");
-    }
   };
 
   const movieNum = data.wishList?.filter(
@@ -63,6 +56,7 @@ export default function UserProfileInfo({ data }) {
           {registerDate}
         </div>
       </div>
+
       <div className="w-full px-4">
         <div className="flex justify-center pt-8 space-x-12">
           <button

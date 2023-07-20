@@ -56,7 +56,7 @@ export async function getStaticProps(context) {
         id: signedUser._id.toString(),
         name: signedUser.name,
         email: signedUser.email,
-        image: signedUser.image,
+        image: signedUser?.image | null,
         registerDate: signedUser.registerDate,
         wishList: signedUser.wishList
           ? JSON.parse(JSON.stringify(signedUser.wishList))
