@@ -10,6 +10,7 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
 import SearchModal from "./search-modal";
+import { ColorTheme } from "../../constants/ColorTheme";
 
 interface NavbarUnderProps {
   onOpen: () => void;
@@ -17,7 +18,11 @@ interface NavbarUnderProps {
   showModal?: () => void;
 }
 
-const NavbarUnder: React.FC<NavbarUnderProps> = ({ onOpen, onClose, showModal }) => {
+const NavbarUnder: React.FC<NavbarUnderProps> = ({
+  onOpen,
+  onClose,
+  showModal,
+}) => {
   const { data: session } = useSession();
   const router = useRouter();
   const modalCtx = useContext(AuthFormContext);
@@ -32,12 +37,17 @@ const NavbarUnder: React.FC<NavbarUnderProps> = ({ onOpen, onClose, showModal })
   };
 
   return (
-    <div className="btm-nav pb-1 text-pink-500 dark:text-pink-400 bg-white dark:bg-slate-800 visible sm:invisible fixed w-full z-20 bottom-0 left-0 border-t">
+    <div
+      className={`btm-nav pb-1 text-[${ColorTheme.tint}] dark:text-[${ColorTheme.lightTint}] bg-white dark:bg-[${ColorTheme.darkBackGround}] visible sm:invisible fixed w-full z-20 bottom-0 left-0 border-t`}
+    >
       <button onClick={onOpen} className="hover:text-pink-700 pt-1">
         <MagnifyingGlassIcon width={30} height={30} />
         Search
       </button>
-      <Link className="hover:text-pink-700 dark:bg-slate-800 pt-1" href="/">
+      <Link
+        className={`hover:text-[] dark:bg-[${ColorTheme.darkBackGround}] pt-1`}
+        href="/"
+      >
         <HomeIcon />
         Home
       </Link>
@@ -48,6 +58,6 @@ const NavbarUnder: React.FC<NavbarUnderProps> = ({ onOpen, onClose, showModal })
       {showModal && <SearchModal onClose={onClose} />}
     </div>
   );
-}
+};
 
 export default NavbarUnder;

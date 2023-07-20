@@ -7,7 +7,9 @@ import AuthFormContext from "../../store/auth-context";
 import NavProfile from "./nav-profile";
 import NavbarUnder from "./navbar-under";
 import SearchModal from "./search-modal";
-import ModeButton from "./mode-btn";
+import ThemeSwitch from "../ui/theme-switch";
+
+import { ColorTheme } from "../../constants/ColorTheme";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -50,7 +52,9 @@ export default function NavBar() {
   return (
     <Fragment>
       <div
-        className={`bg-white dark:bg-slate-900 sticky w-full z-20 top-0 left-0 border-b dark:border-slate-400 ${
+        className={`bg-white dark:bg-[${
+          ColorTheme.darkBackGround
+        }] sticky w-full z-20 top-0 left-0 border-b dark:border-slate-400 ${
           queries.length === 0 ? "" : "hidden sm:block"
         }`}
       >
@@ -84,7 +88,8 @@ export default function NavBar() {
               </button>
             </div>
             <div className="flex flex-row items-center ">
-              <ModeButton />
+              {/* <ModeButton /> */}
+              <ThemeSwitch />
               <div className="sm:ml-6 px-2 hidden sm:block">
                 <div className="dark:text-white space-x-4">
                   {!session && (

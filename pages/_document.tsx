@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import Script from "next/script";
+
+import { ColorTheme } from "../constants/ColorTheme";
 
 export default function Document() {
   return (
@@ -29,7 +30,9 @@ export default function Document() {
         ></script>
         <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
       </Head>
-      <body className="bg-white dark:bg-slate-900 mb-16 sm:mb-0">
+      <body
+        className={`bg-white dark:bg-[${ColorTheme.darkBackGround}] mb-16 sm:mb-0`}
+      >
         <div id="modal-overlay" />
         <Main />
         <NextScript />

@@ -6,10 +6,10 @@ import { Menu, Transition } from "@headlessui/react";
 
 export default function NavProfile({ onClick, classNames }) {
   const { data: session } = useSession();
+  
   let img_url: string;
-
   if (session) {
-    img_url = session.user.image;
+    img_url = session.user.image || "/images/no-profile-icon.png";
   }
 
   return (

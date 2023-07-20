@@ -51,6 +51,11 @@ const CommentListItem: React.FC<CommentListItemProps> = ({
     });
   }
 
+  console.log(comment);
+
+  let image_src: string;
+  image_src = comment?.user?.image || "/images/no-profile-icon.png";
+
   return (
     <li
       key={comment._id}
@@ -58,20 +63,20 @@ const CommentListItem: React.FC<CommentListItemProps> = ({
     >
       <div className="flex justify-between w-full">
         <Link
-          className="flex group rounded-lg p-1 hover:bg-slate-200"
+          className="flex group rounded-lg p-1 hover:bg-slate-200 dark:hover:bg-slate-800"
           href={`/user/${comment.user._id}`}
         >
           <Image
-            src={comment.user.image}
+            src={image_src}
             className="bg-white rounded-full h-12 w-12 m-auto"
             alt=""
             loading="lazy"
             width={45}
             height={45}
             quality={100}
-          ></Image>
+          />
           <div className="flex flex-col md:flex-row space-x-1">
-            <div className="text-lg font-semibold text-slate-900 mx-2 dark:text-slate-50 dark:group-hover:text-slate-800 group-hover:underline">
+            <div className="text-lg font-semibold text-slate-900 mx-2 dark:text-slate-50 group-hover:underline">
               {comment.user.name}
             </div>
 

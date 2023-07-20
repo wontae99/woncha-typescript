@@ -7,7 +7,7 @@ import { itemActions } from "../../store/item-slice";
 import classes from "./sidebar.module.css";
 import { useSession } from "next-auth/react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
-
+import { ColorTheme } from "constants/ColorTheme";
 
 export default function SideBar({ type, contentId }) {
   const { data: session } = useSession();
@@ -47,26 +47,27 @@ export default function SideBar({ type, contentId }) {
   };
 
   return (
-    <div className="w-full md:w-24 relative md:fixed z-10 md:right-0 md:bottom-1/4 bg-white dark:bg-slate-800 md:bg-violet-50 border-b-[2px] md:shadow-xl md:rounded-l-lg text-slate-800 dark:text-slate-200 md:text-slate-900">
+    <div
+      className={`w-full md:w-24 relative md:fixed z-10 md:right-0 md:bottom-1/4 bg-white dark:bg-[${ColorTheme.darkBackGround}] md:bg-violet-50 border-b-[2px] md:shadow-xl md:rounded-l-lg text-slate-800 dark:text-slate-200 md:text-slate-900`}
+    >
       <div className="py-4 grid grid-cols-2 md:grid-cols-1 md:space-y-8 text-center">
-        <div className="">
-          <button
-            type="button"
-            onClick={toggleItemHandler}
-            disabled={btnIsHighlited}
-            className={btnIsHighlited ? "cursor-wait" : ""}
-          >
-            <XCircleIcon
-              width={40}
-              className={`mx-auto ${
-                isAdded
-                  ? "text-red-500 hover:text-red-400"
-                  : `text-blue-500 hover:text-blue-400 ${rotate}`
-              } ${spinClasses}`}
-            />
-            {isAdded ? "Never mind" : "Want to see"}
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={toggleItemHandler}
+          disabled={btnIsHighlited}
+          className={btnIsHighlited ? "cursor-wait" : ""}
+        >
+          <XCircleIcon
+            width={40}
+            className={`mx-auto ${
+              isAdded
+                ? "text-red-500 hover:text-red-400"
+                : `text-blue-500 hover:text-blue-400 ${rotate}`
+            } ${spinClasses}`}
+          />
+          {isAdded ? "Never mind" : "Want to see"}
+        </button>
+
         <div className="">
           <Link href="#comment">
             <PencilIcon

@@ -5,20 +5,22 @@ import SideBar from "./sidebar";
 import Carousel from "../ui/carousel";
 import ContentItem from "../contents/content-item";
 import Comments from "../comments/comments";
+import { ColorTheme } from "constants/ColorTheme";
 
 export default function ContentProfileBody({ data, type, contentId }) {
   const { videoData } = data;
 
   return (
     <Fragment>
-
       {/* side-bar */}
       <SideBar type={type} contentId={contentId} />
 
       {/* //// Main Body //// */}
 
-      <section className="md:containter md:absolute dark:bg-slate-600 flex flex-col mx-auto w-full md:py-10 p-0">
-        <div className="min-w-0 break-words bg-white dark:bg-slate-800 w-full md:mx-auto md:w-3/4 shadow-xl md:rounded-lg">
+      <section
+        className={`md:containter md:absolute dark:bg-[${ColorTheme.darkBackGround}] flex flex-col mx-auto w-full md:py-10 p-0`}
+      >
+        <div className={`min-w-0 break-words bg-white dark:bg-[#171717] w-full md:mx-auto md:w-3/4 shadow-xl md:rounded-lg`}>
           <div className="w-full md:p-4 divide-y divide-slate-200">
             <div className="p-2">
               <h2 className="text-2xl pb-4 font-semibold dark:text-white">
@@ -33,7 +35,7 @@ export default function ContentProfileBody({ data, type, contentId }) {
                 {data.overview ? data.overview : ""}
               </p>
               <Link
-                href="/"
+                href="#"
                 className="text-pink-500 flex justify-end hover:underline underline-offset-1"
               >
                 Show more

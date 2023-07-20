@@ -40,7 +40,7 @@ const ContentItem: React.FC<ContentItemProps> = (props) => {
 
   return (
     <Fragment>
-      <div className="carousel-item text-end relative z-0 w-40 h-60 md:w-48 md:h-72 lg:w-64 lg:h-96 snap-end transition ease-in-out sm:transform-none duration-200 border-2 border-x-white">
+      <div className="carousel-item text-end relative z-0 w-40 h-60 md:w-48 md:h-72 lg:w-64 lg:h-96 snap-end transition ease-in-out sm:transform-none duration-200">
         {contentType === "video" && (
           <PlayCircleIcon className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-red-600 bg-white rounded-full ring-8 ring-red-600 ring-inset" />
         )}

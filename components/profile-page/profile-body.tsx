@@ -1,12 +1,12 @@
-import { useSelector } from "react-redux";
 import { signOut } from "next-auth/react";
+import { useAppSelector } from "../hooks/redux-hooks";
 
 import ProfileBodyCard from "../ui/profile-body-card";
 import MyList from "./my-list";
 import UserProfileInfo from "./user-profile-info";
 
 export default function ProfileBody({ data }) {
-  const showMyList = useSelector((state) => state.ui.myList);
+  const showMyList = useAppSelector((state) => state.ui.myList);
   const movieList = data.wishList?.filter((item) => item.type === "movie");
   const tvList = data.wishList?.filter((item) => item.type === "tv");
 

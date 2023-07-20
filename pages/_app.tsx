@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getSession, SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "next-themes";
 
 import { useAppDispatch, useAppSelector } from "@/components/hooks/redux-hooks";
 import { wrapper } from "../store";
@@ -14,8 +15,6 @@ import Layout from "@/components/layout/layout";
 import PageLoader from "@/components/ui/page-loader";
 
 import "../styles/globals.css";
-
-import DarkModeToggler from "../script/dark-mode-toggler";
 
 let isInitial = true;
 function App({ Component, pageProps: { session, ...pageProps } }) {
@@ -66,7 +65,7 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
   }, [wishList, dispatch]);
 
   return (
-    <Fragment>
+    <ThemeProvider attribute="class">
       <AuthFormContextProvider>
         <SessionProvider session={session}>
           <div id="overlays"></div>
@@ -78,8 +77,7 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
           </Layout>
         </SessionProvider>
       </AuthFormContextProvider>
-      <DarkModeToggler />
-    </Fragment>
+    </ThemeProvider>
   );
 }
 

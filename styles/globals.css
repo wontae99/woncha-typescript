@@ -10,4 +10,7 @@
   button:focus {
     outline: 0;
   }
+  body {
+    @apply dark:bg-gray-800 bg-white;
+  }
 }
