@@ -40,18 +40,26 @@ const NavbarUnder: React.FC<NavbarUnderProps> = ({
     <div
       className={`btm-nav pb-1 text-[${ColorTheme.tint}] dark:text-[${ColorTheme.lightTint}] bg-white dark:bg-[${ColorTheme.darkBackGround}] visible sm:invisible fixed w-full z-20 bottom-0 left-0 border-t`}
     >
-      <button onClick={onOpen} className="hover:text-pink-700 pt-1">
+      <button
+        type="button"
+        onClick={onOpen}
+        className={`pt-1 hover:text-[${ColorTheme.tintHover}]`}
+      >
         <MagnifyingGlassIcon width={30} height={30} />
         Search
       </button>
       <Link
-        className={`hover:text-[] dark:bg-[${ColorTheme.darkBackGround}] pt-1`}
+        className={`text-[${ColorTheme.tint}] hover:text-[${ColorTheme.tintHover}] dark:bg-[${ColorTheme.darkBackGround}] pt-1`}
         href="/"
       >
         <HomeIcon />
         Home
       </Link>
-      <button onClick={profileHandler} className="hover:text-pink-700 pt-1">
+      <button
+        type="button"
+        onClick={profileHandler}
+        className={`hover:text-[${ColorTheme.tintHover}] pt-1`}
+      >
         <UserCircleIcon width={36} height={36} />
         {session ? "Profile" : "Login"}
       </button>
