@@ -18,6 +18,8 @@ interface NavbarUnderProps {
   showModal?: () => void;
 }
 
+const { tint, lightTint, tintHover, darkBackGround } = ColorTheme;
+
 const NavbarUnder: React.FC<NavbarUnderProps> = ({
   onOpen,
   onClose,
@@ -38,7 +40,7 @@ const NavbarUnder: React.FC<NavbarUnderProps> = ({
 
   return (
     <div
-      className={`btm-nav pb-1 text-[${ColorTheme.tint}] dark:text-[${ColorTheme.lightTint}] bg-white dark:bg-[${ColorTheme.darkBackGround}] visible sm:invisible fixed w-full z-20 bottom-0 left-0 border-t`}
+      className={`btm-nav pb-1 text-[${tint}] dark:text-[${lightTint}] bg-white dark:bg-[${darkBackGround}] visible sm:invisible fixed w-full z-20 bottom-0 left-0 border-t`}
     >
       <button
         type="button"
@@ -49,7 +51,7 @@ const NavbarUnder: React.FC<NavbarUnderProps> = ({
         Search
       </button>
       <Link
-        className={`text-[${ColorTheme.tint}] hover:text-[${ColorTheme.tintHover}] dark:bg-[${ColorTheme.darkBackGround}] pt-1`}
+        className={`text-[${tint}] hover:text-[${tintHover}] dark:bg-[${darkBackGround}] pt-1`}
         href="/"
       >
         <HomeIcon />

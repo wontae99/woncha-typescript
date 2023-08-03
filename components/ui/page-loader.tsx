@@ -1,10 +1,12 @@
 import { ColorTheme } from "constants/color-theme";
 import { TailSpin } from "react-loader-spinner";
 
+const darkBackGround = ColorTheme.darkBackGround
+
 const Backdrop = ({ children }) => {
   return (
     <span
-      className={`fixed top-0 left-0 w-full h-full dark:bg-[${ColorTheme.darkBackGround}]`}
+      className={`fixed top-0 left-0 w-full h-full dark:bg-[${darkBackGround}]`}
     >
       {children}
     </span>

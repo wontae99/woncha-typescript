@@ -9,6 +9,8 @@ import { useSession } from "next-auth/react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
 import { ColorTheme } from "constants/color-theme";
 
+const darkBackGround = ColorTheme.darkBackGround
+
 export default function SideBar({ type, contentId }) {
   const { data: session } = useSession();
   const AuthFormCtx = useContext(AuthFormContext);
@@ -48,7 +50,7 @@ export default function SideBar({ type, contentId }) {
 
   return (
     <div
-      className={`w-full md:w-24 relative md:fixed z-10 md:right-0 md:bottom-1/4 bg-white dark:bg-[${ColorTheme.darkBackGround}] md:bg-violet-50 border-b-[2px] md:shadow-xl md:rounded-l-lg text-slate-800 dark:text-slate-200 md:text-slate-900`}
+      className={`w-full md:w-24 relative md:fixed z-10 md:right-0 md:bottom-1/4 bg-white dark:bg-[${darkBackGround}] md:bg-violet-50 border-b-[2px] md:shadow-xl md:rounded-l-lg text-slate-800 dark:text-slate-200 md:text-slate-900`}
     >
       <div className="py-4 grid grid-cols-2 md:grid-cols-1 md:space-y-8 text-center">
         <button
