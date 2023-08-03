@@ -18,4 +18,7 @@ module.exports = {
     heading: ["Poppins", "san-serif"],
   },
   important: true,
+  options: {
+    safelist: ["dark"],
+  },
 };
