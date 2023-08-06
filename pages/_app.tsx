@@ -1,5 +1,4 @@
-import React, { Fragment } from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { getSession, SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
@@ -65,7 +64,7 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
   }, [wishList, dispatch]);
 
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="system">
       <AuthFormContextProvider>
         <SessionProvider session={session}>
           <div id="overlays"></div>

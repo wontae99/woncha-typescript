@@ -30,9 +30,7 @@ export default function Document() {
         ></script>
         <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
       </Head>
-      <body
-        className={`bg-white dark:bg-[${ColorTheme.darkBackGround}] mb-16 sm:mb-0`}
-      >
+      <body className="bg-white dark:bg-[#18181b] mb-16 sm:mb-0">
         <div id="modal-overlay" />
         <Main />
         <NextScript />
