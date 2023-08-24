@@ -3,7 +3,6 @@ import useInput from "../hooks/use-input";
 import { signIn } from "next-auth/react";
 import { createUser } from "../../lib/auth-util";
 
-import classes from "./border-line.module.css";
 import Modal from "../ui/modal";
 import AuthFormContext from "../../store/auth-context";
 import { useDispatch } from "react-redux";
@@ -119,10 +118,10 @@ export default function AuthForm(props) {
   };
 
   const authFormContent = (
-    <div className="flex min-w-100 items-center justify-center py-12 px-6">
+    <div className="flex min-w-100 items-center justify-center py-12 px-6 dark:bg-[#18181b]">
       <div className="w-full max-w-md space-y-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
             {authFormCtx.isForLogin ? "Sign In" : "Sign Up"}
           </h2>
         </div>
@@ -197,9 +196,15 @@ export default function AuthForm(props) {
               />
             </div>
           </div>
-          <span className={classes["border-line"]}>
+          <div className="inline-flex items-center justify-center w-full">
+            <hr className="w-full h-px my-8 bg-gray-300 border-0 dark:bg-gray-700" />
+            <span className="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">
+              or
+            </span>
+          </div>
+          {/* <span className={classes["border-line"]}>
             <p>OR</p>
-          </span>
+          </span> */}
           <div className="flex justify-center space-x-6 pd-4">
             <PlatformLoginBtn platform={"kakao"} />
             <PlatformLoginBtn platform={"google"} />
