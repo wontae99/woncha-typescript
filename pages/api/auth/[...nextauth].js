@@ -11,7 +11,6 @@ export const authOptions = {
   secret: process.env.SECRET,
   callbacks: {
     async session({ session, token, user }) {
-      console.log(token);
       // Send properties to the client, like an access_token from a provider.
       session.user.id = token.sub;
       session.user.image = token.picture;
