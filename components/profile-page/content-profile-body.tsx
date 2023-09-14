@@ -19,31 +19,21 @@ export default function ContentProfileBody({ data, type, contentId }) {
 
       {/* //// Main Body //// */}
 
-      <section
-        className={`md:containter md:absolute dark:bg-[${darkBackGround}] flex flex-col mx-auto w-full md:py-10 p-0`}
-      >
-        <div
-          className={`min-w-0 break-words bg-white dark:bg-[#171717] w-full md:mx-auto md:w-3/4 shadow-xl md:rounded-lg`}
-        >
+      <section className="md:containter md:absolute bg-white dark:bg-[#18181b] flex flex-col mx-auto w-full md:py-10 p-0">
+        <div className="min-w-0 break-words bg-white dark:bg-[#171717] w-full md:mx-auto md:w-3/4 shadow-xl md:rounded-lg">
           <div className="w-full md:p-4 divide-y divide-slate-200">
             <div className="p-2">
-              <h2 className="text-2xl pb-4 font-semibold dark:text-white">
+              <h2 className="text-2xl pb-4 font-semibold text-black dark:text-white">
                 Overview
               </h2>
               {data.tagline && (
-                <h3 className="text-lg italic pb-2 dark:text-slate-100">
+                <h3 className="text-lg italic pb-2 text-gray-500">
                   "{data.tagline}"
                 </h3>
               )}
               <p className="mb-4 text-lg leading-relaxed text-blueGray-700 dark:text-slate-200">
                 {data.overview ? data.overview : ""}
               </p>
-              <Link
-                href="#"
-                className="text-pink-500 flex justify-end hover:underline underline-offset-1"
-              >
-                Show more
-              </Link>
             </div>
 
             {videoData && (

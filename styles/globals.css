@@ -13,4 +13,7 @@
   body {
     @apply dark:bg-gray-800 bg-white;
   }
+  h1, h2 {
+    @apply text-black dark:text-white;
+  }
 }
