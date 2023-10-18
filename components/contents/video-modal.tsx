@@ -18,7 +18,7 @@ const VideoModal: React.FC<VideoModalProps> = (props) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
-      <div className="p-2 dark:bg-zinc-900">
+      <div className="p-2 bg-white dark:bg-zinc-900">
         <h2 className="text-2xl text-end font-semibold">{title}</h2>
       </div>
     </Modal>
