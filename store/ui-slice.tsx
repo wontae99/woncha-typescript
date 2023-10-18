@@ -4,7 +4,6 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: {
     notification: { message: "", isShown: false },
-    myList: { showMovie: false, showTV: false },
     showSearch: false,
   },
   reducers: {
@@ -15,12 +14,6 @@ const uiSlice = createSlice({
     },
     unshownNotif(state) {
       state.notification.isShown = false;
-    },
-    toggleMovieList(state) {
-      state.myList.showMovie = !state.myList.showMovie;
-    },
-    toggleTVList(state) {
-      state.myList.showTV = !state.myList.showTV;
     },
     toggleSearch(state) {
       state.showSearch = !state.showSearch;

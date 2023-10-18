@@ -12,7 +12,6 @@ import { AuthFormContextProvider } from "@/store/auth-context";
 import { fetchContentData } from "@/store/content-action";
 import { fetchItemData, sendListData } from "@/store/item-action";
 
-import Notification from "@/components/ui/notification";
 import Layout from "@/components/layout/layout";
 import PageLoader from "@/components/ui/page-loader";
 
@@ -24,7 +23,6 @@ function App({ Component, pageProps: { session, ...rest } }) {
 
   const dispatch = useAppDispatch();
   const { item } = useAppSelector((state) => state);
-  const { notification } = useAppSelector((state) => state.ui);
 
   const [pageLoading, setPageLoading] = useState(false);
   const router = useRouter();
@@ -74,7 +72,6 @@ function App({ Component, pageProps: { session, ...rest } }) {
         <SessionProvider session={session}>
           <Provider store={store}>
             <div id="overlays"></div>
-            {notification.isShown && <Notification />}
             <Layout>
               {pageLoading ? <PageLoader /> : <Component {...props} />}
             </Layout>
