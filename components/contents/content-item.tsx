@@ -68,6 +68,8 @@ const ContentItem: React.FC<ContentItemProps> = (props) => {
               className="w-full aspect-square hidden"
               width={250}
               height={300}
+              placeholder="blur"
+              blurDataURL={img_url}
             />
           </Link>
           <button

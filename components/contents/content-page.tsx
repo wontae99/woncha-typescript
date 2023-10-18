@@ -29,9 +29,7 @@ export default function ContentPage({
 
   return (
     <main className="relative w-full">
-      <div
-        className={`relative w-full max-h-[70vh] overflow-hidden`}
-      >
+      <div className={`relative w-full max-h-[70vh] overflow-hidden`}>
         <Image
           src={backdrop_url}
           alt="backdrop_poster"
@@ -42,6 +40,8 @@ export default function ContentPage({
           }}
           width={500}
           height={300}
+          placeholder="blur"
+          blurDataURL={backdrop_url}
         />
       </div>
       {/* 타이틀 섹션 */}

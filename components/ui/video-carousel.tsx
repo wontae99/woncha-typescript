@@ -28,6 +28,8 @@ export default function VideoCarousel({ videoData }) {
               className="w-full aspect-video hidden"
               width={480}
               height={270}
+              placeholder="blur"
+              blurDataURL={`https://i3.ytimg.com/vi/${video.key}/maxresdefault.jpg`}
             />
           </Link>
           <Link
