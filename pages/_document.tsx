@@ -1,7 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
-import { ColorTheme } from "../constants/color-theme";
-
 export default function Document() {
   return (
     <Html lang="en">

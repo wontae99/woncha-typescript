@@ -15,6 +15,8 @@ import { fetchItemData, sendListData } from "@/store/item-action";
 import Layout from "@/components/layout/layout";
 import PageLoader from "@/components/ui/page-loader";
 
+import { Analytics } from "@vercel/analytics/react";
+
 import "../styles/globals.css";
 
 let isInitial = true;
@@ -67,7 +69,7 @@ function App({ Component, pageProps: { session, ...rest } }) {
       }
     });
   }, [dispatch, item, getSession]);
-  
+
   return (
     <ThemeProvider attribute="class" defaultTheme="system">
       <AuthFormContextProvider>
@@ -76,6 +78,7 @@ function App({ Component, pageProps: { session, ...rest } }) {
             <div id="overlays"></div>
             <Layout>
               {pageLoading ? <PageLoader /> : <Component {...props} />}
+              <Analytics />
             </Layout>
           </Provider>
         </SessionProvider>
