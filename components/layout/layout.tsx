@@ -3,6 +3,7 @@ import AuthFormContext from "../../store/auth-context";
 
 import NavBar from "./navbar";
 import AuthForm from "../auth/auth-form";
+import Notification from "./notification";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const modalCtx = useContext(AuthFormContext);
@@ -10,6 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <Fragment>
       <NavBar />
+      <Notification />
       <main>{children}</main>
       {modalCtx.isShown && <AuthForm />}
     </Fragment>
