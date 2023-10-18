@@ -25,6 +25,7 @@ function App({ Component, pageProps: { session, ...rest } }) {
   const { item } = useAppSelector((state) => state);
 
   const [pageLoading, setPageLoading] = useState(false);
+  const [isSession, setIsSession] = useState(false);
   const router = useRouter();
 
   // 로딩state 동안 페이지 로더 랜더링
@@ -44,11 +45,12 @@ function App({ Component, pageProps: { session, ...rest } }) {
   useEffect(() => {
     getSession().then((session) => {
       if (session) {
+        setIsSession(true);
         const userId = session.user.id;
         dispatch(fetchItemData(userId));
       }
     });
-  }, [dispatch, getSession]);
+  }, [dispatch, setIsSession]);
 
   useEffect(() => {
     if (isInitial) {
@@ -65,7 +67,7 @@ function App({ Component, pageProps: { session, ...rest } }) {
       }
     });
   }, [dispatch, item, getSession]);
-
+  
   return (
     <ThemeProvider attribute="class" defaultTheme="system">
       <AuthFormContextProvider>

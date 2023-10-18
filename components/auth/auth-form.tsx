@@ -1,19 +1,22 @@
 import { useContext, useState } from "react";
-import useInput from "../hooks/use-input";
+//AUTH
 import { signIn } from "next-auth/react";
-import { createUser } from "../../lib/auth-util";
-
-import Modal from "../ui/modal";
-import AuthFormContext from "../../store/auth-context";
-import { useDispatch } from "react-redux";
-import { uiActions } from "../../store/ui-slice";
+import { createUser } from "@/lib/auth-util";
+// HOOK
+import useInput from "../hooks/use-input";
+import { useAppDispatch } from "../hooks/redux-hooks";
+// CONTEXT
+import AuthFormContext from "@/store/auth-context";
+import { uiActions } from "@/store/ui-slice";
+// COMPONENTS
 import PlatformLoginBtn from "./platform-login-btn";
 import LoginButton from "./login-button";
 import AuthModeToggler from "./auth-mode-toggler";
 import AuthInput from "./auth-input";
+import Modal from "../ui/modal";
 
 export default function AuthForm(props) {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
   const { status, hideAuthForm, toggleLoginForm } = useContext(AuthFormContext);
 
@@ -59,19 +62,9 @@ export default function AuthForm(props) {
     if (status === "signin") {
       try {
         await signIn("credentials", {
-          redirect: false,
+          redirect: true,
           email: enteredEmail,
           password: enteredPassword,
-        }).then((res) => {
-          if (res.error) {
-            dispatch(
-              uiActions.showNotification({
-                message:
-                  res.error ||
-                  "Failed to sign in. Check your email, password input.",
-              })
-            );
-          }
         });
         setLoading(false);
         hideAuthForm();
