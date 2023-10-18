@@ -17,7 +17,7 @@ export default function MyReview({ commentData }) {
   const selectedPage = searchParams.get("page") || 1;
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    router.push(`/${session.data.user.id}/my-review?page=${value}`);
+    router.push(`/my-review?page=${value}`);
   };
 
   return (
