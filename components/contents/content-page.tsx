@@ -1,3 +1,4 @@
+import Image from "next/image";
 // type
 import { ContentData } from "@/lib/types";
 //icon
@@ -29,12 +30,18 @@ export default function ContentPage({
   return (
     <main className="relative w-full">
       <div
-        className={`relative w-full bg-black bg-gradient-to-l from-white via-black to-white`}
+        className={`relative w-full max-h-[70vh] overflow-hidden`}
       >
-        <img
+        <Image
           src={backdrop_url}
-          alt="BackdropImage"
-          className={`bg-cover w-full`}
+          alt="backdrop_poster"
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+          width={500}
+          height={300}
         />
       </div>
       {/* 타이틀 섹션 */}
