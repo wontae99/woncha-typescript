@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import { useContext } from "react";
 import AuthFormContext from "../../store/auth-context";
 
 import {
-  HomeIcon,
-  MagnifyingGlassIcon,
+  ChatBubbleLeftEllipsisIcon,
+  FilmIcon,
+  HeartIcon,
+  TvIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
 import SearchModal from "./search-modal";
@@ -23,45 +24,47 @@ const NavbarUnder: React.FC<NavbarUnderProps> = ({
   showModal,
 }) => {
   const { data: session } = useSession();
-  const router = useRouter();
   const modalCtx = useContext(AuthFormContext);
-
-  const profileHandler = () => {
-    if (session) {
-      router.push(`/user/${session.user.id}`);
-    } else {
-      modalCtx.showLogin();
-      modalCtx.showAuthForm();
-    }
-  };
 
   return (
     <div
-      className={`btm-nav pb-1 text-[#ec4899] bg-white dark:bg-[#18181b] visible sm:invisible fixed w-full z-20 bottom-0 left-0 border-t`}
+      className={`btm-nav pb-1 text-[#ec4899] bg-white dark:bg-[#18181b] visible sm:invisible fixed w-full z-30 bottom-0 left-0 border-t`}
     >
-      <button
-        type="button"
-        onClick={onOpen}
-        className={`pt-1 hover:text-[#db2777]`}
-      >
-        <MagnifyingGlassIcon width={30} height={30} />
-        Search
-      </button>
-      <Link
-        className={`text-[#ec4899] hover:text-[#db2777] dark:bg-[#18181b] pt-1`}
-        href="/"
-      >
-        <HomeIcon />
-        Home
+      <Link href={`/movie`} className={`pt-1 hover:text-[#db2777] pt-1`}>
+        <FilmIcon width={30} height={30} />
+        Movie
       </Link>
-      <button
-        type="button"
-        onClick={profileHandler}
-        className={`hover:text-[#db2777] pt-1`}
-      >
-        <UserCircleIcon width={36} height={36} />
-        {session ? "Profile" : "Login"}
-      </button>
+      <Link href="/tv" className={`text-[#ec4899] hover:text-[#db2777] pt-1`}>
+        <TvIcon width={30} height={30} />
+        TV
+      </Link>
+      {session ? (
+        <>
+          <Link
+            className={`hover:text-[#db2777] pt-1`}
+            href={`/my-review`}
+          >
+            <ChatBubbleLeftEllipsisIcon width={36} height={36} />
+            Review
+          </Link>
+          <Link
+            className={`hover:text-[#db2777] pt-1`}
+            href={`/my-list`}
+          >
+            <HeartIcon width={36} height={36} />
+            Dibs
+          </Link>
+        </>
+      ) : (
+        <button
+          type="button"
+          className={`hover:text-[#db2777] pt-1`}
+          onClick={() => modalCtx.showAuthForm("signin")}
+        >
+          <UserCircleIcon width={36} height={36} />
+          Login
+        </button>
+      )}
       {showModal && <SearchModal onClose={onClose} />}
     </div>
   );

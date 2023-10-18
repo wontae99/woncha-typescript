@@ -1,36 +1,30 @@
 import { createContext, useState } from "react";
 
+type status = "signin" | "signup";
+
 const AuthFormContext = createContext({
+  status: null,
   isShown: null,
-  isForLogin: null,
   isEdit: null,
-  showAuthForm: () => {},
+  showAuthForm: (status: status) => {},
   hideAuthForm: () => {},
   toggleLoginForm: () => {},
-  showSignup: () => {},
-  showLogin: () => {},
   setIsEdit: () => {},
   setIsAdd: () => {},
 });
 
 export function AuthFormContextProvider(props) {
   const [isShown, setIsShown] = useState(false);
-  const [isForLogin, setIsForLogin] = useState(true);
+  const [status, setStatus] = useState<status>("signin");
   const [isEdit, setIsEdit] = useState(false);
 
   const toggleFormHandler = () => {
-    setIsForLogin((prevState) => !prevState);
+    if (status === "signin") setStatus("signup");
+    else setStatus("signin");
   };
 
-  const showLoginFormHandler = () => {
-    setIsForLogin(true);
-  };
-
-  const showSignupHandler = () => {
-    setIsForLogin(false);
-  };
-
-  const showAuthFormHandler = () => {
+  const showAuthFormHandler = (status: status) => {
+    setStatus(status);
     setIsShown(true);
   };
 
@@ -40,13 +34,11 @@ export function AuthFormContextProvider(props) {
 
   const context = {
     isShown,
-    isForLogin,
     isEdit,
+    status,
     showAuthForm: showAuthFormHandler,
     hideAuthForm: hideAuthFormHandler,
     toggleLoginForm: toggleFormHandler,
-    showSignup: showSignupHandler,
-    showLogin: showLoginFormHandler,
     setIsEdit: () => {
       setIsEdit(true);
     },

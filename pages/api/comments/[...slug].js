@@ -5,7 +5,7 @@ import {
   findDocument,
   getAllDocuments,
   insertDocument,
-} from "../../../lib/db-util";
+} from "@/lib/db-util";
 
 export default async function handler(req, res) {
   const { slug } = req.query;

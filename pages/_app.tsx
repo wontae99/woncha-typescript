@@ -3,11 +3,14 @@ import { useRouter } from "next/router";
 import { getSession, SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 
-import { useAppDispatch, useAppSelector } from "@/components/hooks/redux-hooks";
+import { Provider } from "react-redux";
 import { wrapper } from "../store";
-import { AuthFormContextProvider } from "../store/auth-context";
-import { fetchItemData, sendListData } from "../store/item-action";
-import { fetchContentData } from "../store/content-action";
+
+import { useAppDispatch, useAppSelector } from "@/components/hooks/redux-hooks";
+
+import { AuthFormContextProvider } from "@/store/auth-context";
+import { fetchContentData } from "@/store/content-action";
+import { fetchItemData, sendListData } from "@/store/item-action";
 
 import Notification from "@/components/ui/notification";
 import Layout from "@/components/layout/layout";
@@ -16,17 +19,17 @@ import PageLoader from "@/components/ui/page-loader";
 import "../styles/globals.css";
 
 let isInitial = true;
-function App({ Component, pageProps: { session, ...pageProps } }) {
+function App({ Component, pageProps: { session, ...rest } }) {
+  const { store, props } = wrapper.useWrappedStore(rest);
+
   const dispatch = useAppDispatch();
-  const wishList = useAppSelector((state) => state.item);
+  const { item } = useAppSelector((state) => state);
   const { notification } = useAppSelector((state) => state.ui);
+
   const [pageLoading, setPageLoading] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    dispatch(fetchContentData());
-  }, []);
-
+  // 로딩state 동안 페이지 로더 랜더링
   useEffect(() => {
     const handleStart = () => {
       setPageLoading(true);
@@ -39,41 +42,43 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
     router.events.on("routeChangeError", handleComplete);
   }, [router]);
 
+  // 로그인 중일때 my-list 데이터 패칭
   useEffect(() => {
     getSession().then((session) => {
       if (session) {
         const userId = session.user.id;
         dispatch(fetchItemData(userId));
       }
-      return;
     });
-  }, [dispatch]);
+  }, [dispatch, getSession]);
 
   useEffect(() => {
     if (isInitial) {
+      dispatch(fetchContentData());
       isInitial = false;
       return;
     }
+    // my-list 추가/삭제 발생시 백앤드로 데이터 보냄
 
-    if (wishList.changed) {
-      getSession().then((session) => {
+    getSession().then((session) => {
+      if (session) {
         const userId = session?.user.id;
-        dispatch(sendListData(userId, wishList));
-      });
-    }
-  }, [wishList, dispatch]);
+        dispatch(sendListData(userId, item));
+      }
+    });
+  }, [dispatch, item, getSession]);
 
   return (
     <ThemeProvider attribute="class" defaultTheme="system">
       <AuthFormContextProvider>
         <SessionProvider session={session}>
-          <div id="overlays"></div>
-          {notification.isShown && <Notification />}
-          <Layout>
-            <React.StrictMode>
-              {pageLoading ? <PageLoader /> : <Component {...pageProps} />}
-            </React.StrictMode>
-          </Layout>
+          <Provider store={store}>
+            <div id="overlays"></div>
+            {notification.isShown && <Notification />}
+            <Layout>
+              {pageLoading ? <PageLoader /> : <Component {...props} />}
+            </Layout>
+          </Provider>
         </SessionProvider>
       </AuthFormContextProvider>
     </ThemeProvider>

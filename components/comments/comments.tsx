@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { getSession } from "next-auth/react";
 import commentCRUD from "../../lib/comment-util";
 
@@ -47,7 +47,7 @@ function Comments({ type, contentId }) {
   };
 
   return (
-    <div>
+    <Fragment>
       <MyComment
         onShowForm={showCommentFormHandler}
         onDelete={deleteCommentHandler}
@@ -62,7 +62,7 @@ function Comments({ type, contentId }) {
         />
       )}
       <CommentList comments={comments} />
-    </div>
+    </Fragment>
   );
 }
 

@@ -1,9 +1,11 @@
-import { ObjectId } from "mongodb";
-import { connectToDatabase } from "../../../lib/db-util";
+import type { NextApiRequest, NextApiResponse } from "next";
+import { MongoClient, ObjectId } from "mongodb";
 
-export default async function handler(req, res) {
+import { connectToDatabase } from "@/lib/db-util";
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { userId } = req.query;
-  let client;
+  let client: MongoClient;
 
   try {
     client = await connectToDatabase();
@@ -18,7 +20,7 @@ export default async function handler(req, res) {
       const response = await client
         .db()
         .collection("users")
-        .findOne({ _id: ObjectId(userId) }, { projection: { wishList: 1 } });
+        .findOne({ _id: new ObjectId(userId as string) }, { projection: { wishList: 1 } });
       res.status(200).json(response);
     } catch (err) {
       res
@@ -33,7 +35,7 @@ export default async function handler(req, res) {
         .db()
         .collection("users")
         .updateOne(
-          { _id: ObjectId(userId) },
+          { _id: new ObjectId(userId as string) },
           {
             $set: { wishList: items },
           }

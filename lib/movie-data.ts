@@ -1,6 +1,6 @@
 import { ContentData } from "./types";
 
-const api_key = process.env.movie_api_key;
+export const api_key = process.env.movie_api_key;
 type Content = "tv" | "movie";
 
 export async function getTrendingContents(contentType: Content) {
@@ -23,7 +23,7 @@ export async function getTopRatedContents(contentType: Content) {
     const data = await response.json();
     return data.results;
   } catch (err) {
-    throw new Error(err.message || `Failed to fetch ${contentType} data`);
+    throw new Error(`Failed to fetch ${contentType} data` || err.message);
   }
 }
 

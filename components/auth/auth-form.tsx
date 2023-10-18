@@ -15,7 +15,7 @@ import AuthInput from "./auth-input";
 export default function AuthForm(props) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const authFormCtx = useContext(AuthFormContext);
+  const { status, hideAuthForm, toggleLoginForm } = useContext(AuthFormContext);
 
   const passwordInputProps = useInput("password");
   const emailInputProps = useInput("email");
@@ -56,7 +56,7 @@ export default function AuthForm(props) {
       return;
     }
     // login state 일때 작동
-    if (authFormCtx.isForLogin) {
+    if (status === "signin") {
       try {
         await signIn("credentials", {
           redirect: false,
@@ -74,7 +74,7 @@ export default function AuthForm(props) {
           }
         });
         setLoading(false);
-        authFormCtx.hideAuthForm();
+        hideAuthForm();
       } catch (err) {
         dispatch(
           uiActions.showNotification({
@@ -92,11 +92,10 @@ export default function AuthForm(props) {
           enteredPassword
         );
         if (!response.ok) {
-          authFormCtx.hideAuthForm();
+          hideAuthForm();
           throw new Error(response.message);
         }
         setLoading(false);
-        authFormCtx.showLogin();
       } catch (err) {
         dispatch(
           uiActions.showNotification({
@@ -112,17 +111,17 @@ export default function AuthForm(props) {
   };
 
   const switchAuthModeHandler = () => {
-    authFormCtx.toggleLoginForm();
+    toggleLoginForm();
     resetEmail();
     resetPassword();
   };
 
   const authFormContent = (
-    <div className="flex min-w-100 items-center justify-center py-12 px-6 dark:bg-[#18181b]">
+    <div className="flex min-w-100 items-center justify-center py-12 px-6 bg-white dark:bg-[#18181b]">
       <div className="w-full max-w-md space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
-            {authFormCtx.isForLogin ? "Sign In" : "Sign Up"}
+            {status === "signin" ? "Sign In" : "Sign Up"}
           </h2>
         </div>
         <form
@@ -132,7 +131,7 @@ export default function AuthForm(props) {
           onSubmit={submitHandler}
         >
           <div className="space-y-4 rounded-md">
-            {!authFormCtx.isForLogin && (
+            {status === "signup" && (
               <div>
                 <label htmlFor="username" className="sr-only">
                   Name
@@ -185,26 +184,20 @@ export default function AuthForm(props) {
           </div>
 
           <div>
-            <LoginButton
-              loading={loading}
-              isForLogin={authFormCtx.isForLogin}
-            />
+            <LoginButton loading={loading} isForLogin={status === "signin"} />
             <div className="relative flex justify-center mt-2">
               <AuthModeToggler
                 onToggle={switchAuthModeHandler}
-                isForLogin={authFormCtx.isForLogin}
+                isForLogin={status === "signin"}
               />
             </div>
           </div>
           <div className="inline-flex items-center justify-center w-full">
             <hr className="w-full h-px my-8 bg-gray-300 border-0 dark:bg-gray-700" />
-            <span className="absolute px-3 font-medium text-gray-900 -translate-x-1/2 bg-white left-1/2 dark:text-white dark:bg-gray-900">
+            <span className="absolute px-3 -translate-x-1/2 left-1/2 bg-white dark:bg-[#18181b] font-medium text-gray-900 dark:text-white">
               or
             </span>
           </div>
-          {/* <span className={classes["border-line"]}>
-            <p>OR</p>
-          </span> */}
           <div className="flex justify-center space-x-6 pd-4">
             <PlatformLoginBtn platform={"kakao"} />
             <PlatformLoginBtn platform={"google"} />
@@ -215,32 +208,4 @@ export default function AuthForm(props) {
   );
 
   return <Modal onClose={props.onClose}>{authFormContent}</Modal>;
-}
-
-{
-  /* <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-              />
-              <label
-                htmlFor="remember-me"
-                className="ml-2 block text-sm text-gray-900"
-              >
-                Remember me
-              </label>
-            </div>
-
-            <div className="text-sm">
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                Forgot your password?
-              </a>
-            </div>
-          </div> */
 }

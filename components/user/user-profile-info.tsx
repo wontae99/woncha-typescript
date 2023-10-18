@@ -2,9 +2,8 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { useRouter } from "next/router";
 import { uiActions } from "../../store/ui-slice";
-import { useAppDispatch, useAppSelector } from "../hooks/redux-hooks";
+import { useAppDispatch } from "../hooks/redux-hooks";
 
 export default function UserProfileInfo({ data }) {
   const { data: session } = useSession();

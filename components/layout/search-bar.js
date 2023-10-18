@@ -46,7 +46,7 @@ export default function SearchBar({ onClose }) {
       <div className="sticky top-0" {...getRootProps()}>
         <input
           type="search"
-          className="block w-full p-4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:placeholder-gray-300 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          className="block w-full p-4 border border-gray-300 rounded-lg dark:bg-gray-700 dark:placeholder-gray-300"
           placeholder="Search content..."
           {...getInputProps()}
         />
@@ -63,7 +63,7 @@ export default function SearchBar({ onClose }) {
           {groupedOptions.map((option, index) => (
             <Link
               key={option.id}
-              href={`/content/${option.type}/${option.id}`}
+              href={`/${option.type}/${option.id}`}
               onClick={closeHandler}
             >
               <li

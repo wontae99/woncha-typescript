@@ -15,7 +15,7 @@ const CommentForm = ({ addComment, onEdit }) => {
     if (session) {
       return;
     }
-    ctx.showAuthForm();
+    ctx.showAuthForm("signin");
   };
 
   const [enteredText, setEnteredText] = useState("");

@@ -3,8 +3,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import KakaoProvider from "next-auth/providers/kakao";
 import GoogleProvider from "next-auth/providers/google";
 
-import { verifyPassword } from "../../../lib/auth-util";
-import { connectToDatabase } from "../../../lib/db-util";
+import { verifyPassword } from "@/lib/auth-util";
+import { connectToDatabase } from "@/lib/db-util";
 
 export const authOptions = {
   trustHost: true,

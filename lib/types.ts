@@ -33,8 +33,10 @@ export type ContentData = {
   title?: string; // media_type이 movie
   name?: string; // media_type이 tv
   original_name: string;
+  original_language?: string;
   overview: string;
   poster_path: string;
+  tagline?: string;
   genres?: {
     id: number;
     name: string;

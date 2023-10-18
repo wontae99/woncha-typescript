@@ -4,16 +4,24 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply dark:bg-[#171717] bg-white ease-in duration-100;
+  }
   h1 {
     font-family: Poppins, sans-serif;
   }
   button:focus {
     outline: 0;
   }
-  body {
-    @apply dark:bg-gray-800 bg-white;
-  }
-  h1, h2 {
-    @apply text-black dark:text-white;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    @apply text-black dark:text-white ease-in duration-100;
   }
 }

@@ -1,32 +1,24 @@
-import { Fragment } from "react";
-import { getTopRatedContents, getTrendingContents } from "../lib/movie-data";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
-import ContentGrid from "../components/contents/content-grid";
+import { getTopRatedContents, getTrendingContents } from "@/lib/movie-data";
 
-export default function Home(props) {
-  const { movies, tvShows } = props;
-  // const data = useSelector((state) => state.content.contents);
-  // console.log(data);
+import ContentGrid from "@/components/contents/content-grid";
+export default function Home({
+  movies,
+  tvShows,
+}: InferGetStaticPropsType<GetStaticProps>) {
 
   return (
-    <Fragment>
-      <div className="last:pb-10">
-        <ContentGrid contents={movies.trending} heading={"Trending Movies"} />
-        <ContentGrid
-          contents={tvShows.trending}
-          heading={"Trending TV Shows"}
-        />
-        <ContentGrid contents={movies.topRated} heading={"Top Rated Movies"} />
-        <ContentGrid
-          contents={tvShows.topRated}
-          heading={"Top Rated TV Shows"}
-        />
-      </div>
-    </Fragment>
+    <main className="last:pb-10">
+      <ContentGrid contents={movies.trending} heading={"Trending Movies"} />
+      <ContentGrid contents={tvShows.trending} heading={"Trending TV Shows"} />
+      <ContentGrid contents={movies.topRated} heading={"Top Rated Movies"} />
+      <ContentGrid contents={tvShows.topRated} heading={"Top Rated TV Shows"} />
+    </main>
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const trendingMovies = await getTrendingContents("movie");
   const trendingTvShows = await getTrendingContents("tv");
   const topRatedMovies = await getTopRatedContents("movie");

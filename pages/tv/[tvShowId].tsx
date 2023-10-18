@@ -1,10 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 // types
-import type {
-  GetStaticProps,
-  GetStaticPaths,
-} from "next";
+import type { GetStaticProps, GetStaticPaths } from "next";
 // libs for data-fetching
 import {
   getAllContentIds,
@@ -12,8 +9,8 @@ import {
   getVideoWithId,
 } from "@/lib/movie-data";
 //components
-import Profile from "@/components/profile-page/profile";
 import { ContentData } from "@/lib/types";
+import ContentPage from "@/components/contents/content-page";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const contentIdList = await getAllContentIds("tv");
@@ -47,20 +44,14 @@ export const getStaticProps: GetStaticProps = async (context: {
   };
 };
 
-export default function TvShowDetailPage({
-  data,
-  contentId,
-}: {
-  data: ContentData;
-  contentId: string;
-}) {
+export default function TvShowDetailPage({ data }: { data: ContentData }) {
   return (
     <Fragment>
       <Head>
         <title>TV show - {data.name}</title>
         <meta name="description" content={data.overview} />
       </Head>
-      <Profile data={data} type={"tv"} contentId={contentId} />
+      <ContentPage data={data} type="tv" />
     </Fragment>
   );
 }

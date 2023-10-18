@@ -1,12 +1,14 @@
 import { Fragment } from "react";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+
+import { useSession } from "next-auth/react";
+
 import { Menu, Transition } from "@headlessui/react";
 
 export default function NavProfile({ onClick, classNames }) {
   const { data: session } = useSession();
-  
+
   let img_url: string;
   if (session) {
     img_url = session.user.image || "/images/no-profile-icon.png";
@@ -39,13 +41,26 @@ export default function NavProfile({ onClick, classNames }) {
           <Menu.Item>
             {({ active }) => (
               <Link
-                href={`/user/${session?.user.id}`}
+                href={`/my-list`}
                 className={classNames(
                   active ? "bg-gray-100" : "",
                   "block px-4 py-2 text-sm text-gray-700"
                 )}
               >
-                Your Profile
+                My List
+              </Link>
+            )}
+          </Menu.Item>
+          <Menu.Item>
+            {({ active }) => (
+              <Link
+                href={`/my-review`}
+                className={classNames(
+                  active ? "bg-gray-100" : "",
+                  "block px-4 py-2 text-sm text-gray-700"
+                )}
+              >
+                My Reviews
               </Link>
             )}
           </Menu.Item>
@@ -58,7 +73,7 @@ export default function NavProfile({ onClick, classNames }) {
                   "block w-full text-start px-4 py-2 text-sm text-gray-700"
                 )}
               >
-                Sign out
+                Sign Out
               </button>
             )}
           </Menu.Item>

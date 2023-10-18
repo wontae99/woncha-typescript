@@ -22,7 +22,7 @@ const Notification = () => {
         <div className="relative w-full h-full max-w-2xl md:h-auto">
           <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
             <div className="p-6 space-y-6">
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+              <p className="text-base leading-relaxed">
                 {message}
               </p>
             </div>
@@ -31,7 +31,7 @@ const Notification = () => {
               <button
                 type="button"
                 onClick={closeHandler}
-                className="w-full text-pink-600 bg-white font-medium rounded-lg px-5 py-2.5 text-center text-lg dark:bg-blue-600"
+                className="w-full text-pink-500 font-medium rounded-lg px-5 py-2.5 text-center text-lg"
               >
                 close
               </button>

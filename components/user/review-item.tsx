@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getDataWithId } from "../../../lib/movie-data";
+import { getDataWithId } from "@/lib/movie-data";
 
 import { FilmIcon } from "@heroicons/react/20/solid";
 import { TvIcon } from "@heroicons/react/20/solid";
 
-export default function CommentListItem({ date, content, comment }) {
+export default function ReviewItem({ date, content, comment }) {
   const [title, setTitle] = useState("loading...");
   const dmy = new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -43,7 +43,7 @@ export default function CommentListItem({ date, content, comment }) {
           <div className="text-lg font-semibold text-gray-900 dark:text-white hover:text-pink-600">
             <Link
               className="flex space-x-1 items-center"
-              href={`/content/${content.content}/${content.contentId}/`}
+              href={`/${content.content}/${content.contentId}/`}
             >
               <h3>{title}</h3>
               {content.content === "movie" ? (

@@ -31,7 +31,7 @@ const ContentItem: React.FC<ContentItemProps> = (props) => {
 
   function contentClickHandler() {
     if (contentType !== "video") {
-      router.push(`/content/${contentType}/${content.id}`);
+      router.push(`/${contentType}/${content.id}`);
     } else {
       setShowModal(true);
     }

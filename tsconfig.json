@@ -18,7 +18,8 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"]
+      "@/lib/*": ["lib/*"],
+      "@/store/*": ["store/*"]
     }
   },
   "include": [
@@ -30,7 +31,7 @@
     "components/layout/search-bar.tsx",
     "lib/auth-util.js",
     "pages/api/auth/[...nextauth].js",
-    "pages/api/wish-list/[userId].js",
+    "pages/api/wish-list/[userId].ts",
     "pages/api/comments/[...slug].js"
   ],
   "exclude": ["node_modules"]

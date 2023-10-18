@@ -51,8 +51,6 @@ const CommentListItem: React.FC<CommentListItemProps> = ({
     });
   }
 
-  console.log(comment);
-
   let image_src: string;
   image_src = comment?.user?.image || "/images/no-profile-icon.png";
 
@@ -62,9 +60,8 @@ const CommentListItem: React.FC<CommentListItemProps> = ({
       className="flex flex-col py-4 w-full justify-between p-2 md:p-4"
     >
       <div className="flex justify-between w-full">
-        <Link
+        <div
           className="flex group rounded-lg p-1 hover:bg-slate-200 dark:hover:bg-slate-800"
-          href={`/user/${comment.user._id}`}
         >
           <Image
             src={image_src}
@@ -85,7 +82,7 @@ const CommentListItem: React.FC<CommentListItemProps> = ({
               {comment.comment.rating}
             </div>
           </div>
-        </Link>
+        </div>
         <div className="flex flex-col justify-between justify-end text-end">
           <p className="text-slate-500 text-sm dark:text-slate-300 mb-2">
             {comment.edited ? "(edited)" : ""} {comment.timeDiff}
