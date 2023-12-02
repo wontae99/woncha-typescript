@@ -156,3 +156,15 @@ mui의 autocomplete 기능을 사용하여 content 제목들의 키워드를 통
 ## 버그 수정
 
 - `watch list` 추가/삭제시 `notification` 메시지가 반대로 뜨는 현상 수정 : `redux`에서 리스트 토글로 추가 삭제하던 함수를 분리하여 추가/삭제시 마다 알림 메시지를 따로 설정.
+
+<br/><br/>
+
+# `v2.1` 추가 개선
+
+## 추가 컨텐츠 패칭
+
+[blog](https://wontae99.vercel.app/blog/NextJS/infinite-scroll)
+
+- 홈페이지 및 Movie, TV show 페이지 에서 `View all` 버튼을 누를 시 추가로 더 많은 컨텐츠들을 볼 수 있는 페이지 추가.
+- 해당 페이지에 무한 스크롤 기능 추가 
+  - 스크롤을 내려 화면 하단에 도달할 시, 자동으로 컨텐츠 데이터를 추가로 패칭함.
