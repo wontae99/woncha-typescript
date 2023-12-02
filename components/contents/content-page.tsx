@@ -45,7 +45,7 @@ export default function ContentPage({
         />
       </div>
       {/* 타이틀 섹션 */}
-      <section className="flex w-full flex justify-between flex-col md:flex-row p-4 md:p-8">
+      <section className="flex w-full justify-between flex-col md:flex-row p-4 md:p-8">
         <div className="text-start leading-normal self-center">
           <h1 className="text-3xl md:text-4xl lg:text-6xl font-black mb-2">
             {data?.name || data.title}

@@ -3,10 +3,10 @@ import { ContentData } from "./types";
 export const api_key = process.env.movie_api_key;
 type Content = "tv" | "movie";
 
-export async function getTrendingContents(contentType: Content) {
+export async function getTrendingContents(contentType: Content, page = 1) {
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/trending/${contentType}/week?api_key=${api_key}`
+      `https://api.themoviedb.org/3/trending/${contentType}/week?api_key=${api_key}&page=${page}`
     );
     const data = await response.json();
     return data.results;
@@ -15,10 +15,10 @@ export async function getTrendingContents(contentType: Content) {
   }
 }
 
-export async function getTopRatedContents(contentType: Content) {
+export async function getTopRatedContents(contentType: Content, page = 1) {
   try {
     const response = await fetch(
-      `https://api.themoviedb.org/3/${contentType}/top_rated?api_key=${api_key}&language=en-US&page=1`
+      `https://api.themoviedb.org/3/${contentType}/top_rated?api_key=${api_key}&language=en-US&page=${page}`
     );
     const data = await response.json();
     return data.results;

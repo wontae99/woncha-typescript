@@ -13,7 +13,7 @@ const Backdrop = ({ children }) => {
 export default function PageLoader() {
   return (
     <Backdrop>
-      <div className="fixed left-1/2 top-1/3 -translate-x-1/2 translate-y-1/2">
+      <div className="screen-center">
         <TailSpin
           height="55"
           width="55"

@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 // import { useAppSelector } from "@/components/hooks/redux-hooks";
 
 import ContentGrid from "@/components/contents/content-grid";
@@ -12,16 +11,15 @@ export async function getStaticProps() {
     props: {
       movies: { trending: trendingMovies, topRated: topRatedMovies },
     },
+    revalidate: 60,
   };
 }
 
 export default function AllMoviesPage({ movies }) {
   return (
-    <Fragment>
-      <div className="pb-10">
-        <ContentGrid contents={movies.trending} heading={"Trending Movies"} />
-        <ContentGrid contents={movies.topRated} heading={"Top Rated Movies"} />
-      </div>
-    </Fragment>
+    <main className="pb-10">
+      <ContentGrid contents={movies.trending} heading={"Trending Movies"} />
+      <ContentGrid contents={movies.topRated} heading={"Top Rated Movies"} />
+    </main>
   );
 }

@@ -7,7 +7,6 @@ export default function Home({
   movies,
   tvShows,
 }: InferGetStaticPropsType<GetStaticProps>) {
-
   return (
     <main className="last:pb-10">
       <ContentGrid contents={movies.trending} heading={"Trending Movies"} />
@@ -29,5 +28,6 @@ export async function getStaticProps() {
       movies: { trending: trendingMovies, topRated: topRatedMovies },
       tvShows: { trending: trendingTvShows, topRated: topRatedTvShows },
     },
+    revalidate: 60,
   };
 }
