@@ -23,6 +23,7 @@ const ContentCard = ({ content, contentType, index }: Props) => {
   const rate = Math.round(content.vote_average * 10) / 10;
 
   const MotionLink = motion(Link);
+  const MotionImage = motion(Image);
 
   return (
     <MotionLink
@@ -38,12 +39,12 @@ const ContentCard = ({ content, contentType, index }: Props) => {
       href={`/${contentType}/${content.id}`}
       className="max-w-sm rounded relative w-[40vh] sm:w-full"
     >
-      <div className="relative w-full h-[40vh]">
-        <Image
+      <div className="relative w-full h-[40vh] rounded-md border-[0.5px] border-slate-500 overflow-hidden">
+        <MotionImage
           src={img_url}
           alt={content.name || content.title}
           fill
-          className="rounded-xl"
+          className="hover:scale-105 transition duration-300"
         />
       </div>
       <div className="py-4 flex flex-col gap-3">
